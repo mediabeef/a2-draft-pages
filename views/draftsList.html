@@ -1,0 +1,30 @@
+{% if pages.length %}
+  {% for page in pages %}
+    <tr data-page-id="{{ page._id }}">
+      <td>
+        <input type="checkbox" value="{{ page._id }}" />
+      </td>
+      <td>
+        {% if page.slug|first == '/' %}
+          <a href="{{ page.slug }}" target="_blank">
+            {{ page.title | d(page.slug) }}
+          </a>
+        {% else %}
+          {{ page.title | d(page.slug) }}
+        {% endif %}
+      </td>
+      <td>
+        {% if page.lastEditAuthor.email %}
+          <a href="mailto:{{ page.lastEditAuthor.email | e }}" target="_blank">
+            {{ page.lastEditAuthor.firstName | e }} {{ page.lastEditAuthor.lastName | e }}
+          </a>
+        {% else %}
+          {{ page.lastEditAuthor.firstName | e }} {{ page.lastEditAuthor.lastName | e }}
+        {% endif %}
+      </td>
+      <td>{{ page.lastEditTime | date('LLL') }}</td>
+    </tr>
+  {% endfor %}
+{% else %}
+  <tr><td>No pending drafts.</td></tr>
+{% endif %}

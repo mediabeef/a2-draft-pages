@@ -1,0 +1,32 @@
+{#
+  add this wherever you want to include the menu. Probably outerLayout.html
+
+  {{ draftPagesMenu({ edit: permissions.edit, admin: permissions.admin, page: page }) }}
+
+#}
+{% if args.edit %}
+  <ul class="apos-admin-bar-item apos-accordion-menu draft-menu">
+    <li class="apos-accordion-title"
+        {% if args.page.draftareas %}style="color:#f7a032;font-weight:bold"{% endif %}>
+        Drafts
+    </li>
+    <li class="apos-accordion-items">
+      <ul class="apos-page-bar">
+        {% if args.page.draftareas %}
+          <li href="#" class="apos-control apos-accordion-item apos-button apos-button draft-show-original">Show Original</li>
+          <li data-page-id="{{ args.page._id | string }}" href="#" class="apos-control apos-accordion-item apos-button draft-revert">Revert Edits</li>
+        {% endif %}
+        {% if args.admin %}
+          {% if args.page.draftareas %}
+            <li data-page-id="{{ args.page._id | string }}" href="#" class="apos-control apos-accordion-item apos-button apos-button draft-commit">Commit Edits</li>
+          {% endif %}
+          <li href="#" class="apos-control apos-accordion-item apos-button apos-button drafts-list-button">List All Edits</li>
+        {% endif %}
+      </ul>
+    </li>
+  </ul>
+
+<script type="text/javascript">
+  {% include "drafts.js" %}
+</script>
+{% endif %}

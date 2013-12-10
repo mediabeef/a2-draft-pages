@@ -1,0 +1,32 @@
+<div class="drafts-list-page apos-modal apos-template">
+  <h3>Pending Drafts</h3>
+  <style type="text/css">
+    table.drafts-table {
+      margin: 20px;
+    }
+    table.drafts-table td {
+      padding-right: 20px;
+    }
+    table.drafts-table thead td {
+      font-weight: bold;
+    }
+    table.drafts-table thead td.sort {
+      cursor: pointer;
+    }
+  </style>
+  <table class='drafts-table'>
+    <thead>
+      <td></td>
+      <td>Page</td>
+      <td data-sort="author" class='sort'>Last Edit Author</td>
+      <td class="sort" data-sort="time">Last Edit Time</td>
+    </thead>
+    <tbody>
+    </tbody>
+  </table>
+  <div class="apos-modal-footer">
+    <a href="#" data-action="dismiss" class="apos-control apos-button commit-selected">Commit Selected</a>
+    <a href="#" data-action="dismiss" class="apos-control apos-button revert-selected">Revert Selected</a>
+    <a href="#" data-action="dismiss" class="apos-control apos-button apos-cancel">Close</a>
+  </div>
+</div>
